@@ -7,18 +7,6 @@ function CertificateDetails({ metadata, isValid = true }) {
   const [searchParams] = useSearchParams();
   const code = searchParams.get('code');
 
-  // Format date like: March 22, 2025
-  const formatDate = (dateStr) => {
-    if (!dateStr) return 'Unknown';
-    const date = new Date(dateStr);
-    if (isNaN(date)) return 'Invalid Date';
-    return date.toLocaleDateString('en-US', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    });
-  };
-
   return (
     <div className="certificate-container">
       <div className="certificate-header">
@@ -37,10 +25,12 @@ function CertificateDetails({ metadata, isValid = true }) {
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
-          Certificate Valid
+          {isValid ? 'Certificate Valid' : 'Certificate Invalid'}
         </div>
         <h1>Certificate of Completion</h1>
-        <p>This certifies that the individual named below has successfully completed the course</p>
+        <p>
+          This certifies that the individual named below has successfully completed the program
+        </p>
       </div>
 
       <div className="certificate-body">
@@ -48,18 +38,23 @@ function CertificateDetails({ metadata, isValid = true }) {
 
         <div className="certificate-details">
           <div className="detail-item">
-            <span className="detail-label">Course</span>
-            <span className="detail-value">{metadata.course}</span>
+            <span className="detail-label">Role</span>
+            <span className="detail-value">{metadata.role}</span>
           </div>
 
           <div className="detail-item">
-            <span className="detail-label">Issue Date</span>
-            <span className="detail-value">{formatDate(metadata.issue_date)}</span>
+            <span className="detail-label">Duration</span>
+            <span className="detail-value">{metadata.duration}</span>
+          </div>
+
+          <div className="detail-item">
+            <span className="detail-label">Intern ID</span>
+            <span className="detail-value">{metadata.intern_id}</span>
           </div>
 
           <div className="detail-item">
             <span className="detail-label">Status</span>
-            <span className="detail-value status-valid">
+            <span className={`detail-value ${isValid ? 'status-valid' : 'status-invalid'}`}>
               {isValid ? 'Valid' : 'Invalid'}
             </span>
           </div>
@@ -82,8 +77,12 @@ function CertificateDetails({ metadata, isValid = true }) {
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
         </div>
-        <p>This certificate confirms the successful completion of the course requirements.</p>
-        <div className="certificate-id">Certificate ID: {code || 'N/A'}</div>
+        <p>
+          This certificate confirms the successful completion of the internship requirements.
+        </p>
+        <div className="certificate-id">
+          Certificate Code: {metadata.intern_id || code || 'N/A'}
+        </div>
       </div>
     </div>
   );
