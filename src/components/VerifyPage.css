@@ -1,0 +1,225 @@
+/* Reset */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+/* Page container */
+.verify-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+}
+
+/* Main content expands to push footer down */
+.main {
+  flex-grow: 1;
+  position: relative;
+  z-index: 1; /* above background shapes */
+}
+
+/* Navbar */
+.navbar {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: rgba(0,0,0,0.9);
+  border-bottom: 1px solid rgba(34,197,94,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.logo { 
+  font-size: 24px; 
+  font-weight: 800; 
+  color:#22c55e; 
+  letter-spacing:1px; 
+}
+
+.navbar nav a { 
+  margin:0 15px; 
+  color:#ccc; 
+  font-weight:500; 
+  text-decoration:none; 
+  transition:0.3s; 
+}
+.navbar nav a:hover { 
+  color:#22c55e; 
+}
+
+/* Verify Section */
+.verify-section {
+  padding: 120px 20px;
+  text-align: center;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1; /* above background shapes */
+}
+
+.verify-section h1 { 
+  font-size: 48px; 
+  font-weight: 800; 
+  margin-bottom:20px; 
+  color:#fff; 
+}
+
+.verify-section p { 
+  font-size:20px; 
+  max-width:650px; 
+  color:#aaa; 
+  margin-bottom:40px; 
+}
+
+.verify-form { 
+  display:flex; 
+  flex-direction: column; 
+  gap:20px; 
+  width:100%; 
+  max-width:500px; 
+}
+
+.form-group input { 
+  padding:16px; 
+  border-radius:12px; 
+  border:1px solid rgba(34,197,94,0.3); 
+  background:#1a1a1a; 
+  color:#fff; 
+  font-size:16px; 
+  transition:all 0.3s; 
+}
+
+.form-group input:focus { 
+  border-color:#22c55e; 
+  box-shadow:0 0 12px rgba(34,197,94,0.4); 
+  outline:none; 
+}
+
+.form-group input::placeholder { 
+  color:#aaa; 
+}
+
+.cta-btn {
+  background:#22c55e;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:600;
+  padding:16px;
+  cursor:pointer;
+  transition: all 0.3s;
+}
+
+.cta-btn:hover {
+  background:#16a34a;
+  box-shadow:0 8px 20px rgba(34,197,94,0.35);
+  transform: translateY(-2px);
+}
+
+/* Verify Info */
+.verify-info { 
+  margin-top:40px; 
+  padding:30px 20px;
+  border-top:1px solid rgba(34,197,94,0.2); 
+  color: rgba(255,255,255,0.85); 
+  font-size:15px; 
+  line-height:1.8;
+  text-align: left;
+  max-width:500px;
+  width:100%;
+}
+
+.verify-info h2 { 
+  font-size:18px; 
+  margin-bottom:12px; 
+  color:#fff; 
+}
+
+.verify-info ul { 
+  list-style:none; 
+  padding:0; 
+  margin:0; 
+}
+
+.verify-info ul li { 
+  margin-bottom:10px; 
+  position: relative;
+  padding-left:25px;
+}
+
+.verify-info ul li::before { 
+  content:"✔"; 
+  color:#22c55e; 
+  position: absolute;
+  left:0;
+}
+
+/* Footer */
+.footer { 
+  background:#000; 
+  text-align:center; 
+  padding:25px 10px; 
+  font-size:14px; 
+  color:#666; 
+  border-top:1px solid rgba(34,197,94,0.15); 
+  z-index: 1;
+}
+
+/* Background Shapes */
+.background-shapes {
+  position: absolute; /* shapes stay inside section */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.2;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #22c55e, #16a34a);
+  animation: floatShape 15s ease-in-out infinite;
+}
+
+/* Different shapes and sizes */
+.shape.circle { border-radius: 50%; }
+.shape.square { border-radius: 12px; }
+
+.shape:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 15%; animation-duration: 14s; }
+.shape:nth-child(2) { width: 60px; height: 60px; top: 40%; left: 70%; animation-duration: 18s; }
+.shape:nth-child(3) { width: 150px; height: 150px; top: 70%; left: 25%; animation-duration: 20s; } /* bottom-left big circle */
+.shape:nth-child(4) { width: 70px; height: 70px; top: 20%; left: 80%; animation-duration: 16s; }
+
+/* Floating Animation with scale & rotate */
+@keyframes floatShape {
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.2; }
+  25% { transform: translateY(-40px) rotate(90deg) scale(1.1); opacity: 0.25; }
+  50% { transform: translateY(-80px) rotate(180deg) scale(1); opacity: 0.3; }
+  75% { transform: translateY(-40px) rotate(270deg) scale(0.9); opacity: 0.25; }
+  100% { transform: translateY(0) rotate(360deg) scale(1); opacity: 0.2; }
+}
+
+/* Responsive */
+@media (max-width:768px) {
+  .verify-section h1 { font-size:36px; }
+  .verify-section p { font-size:16px; }
+
+  /* Reduce shapes on mobile */
+  .shape:nth-child(1) { width: 50px; height: 50px; top: 10%; left: 15%; }
+  .shape:nth-child(2) { width: 40px; height: 40px; top: 40%; left: 70%; }
+  .shape:nth-child(3) { width: 100px; height: 100px; top: 70%; left: 25%; }
+  .shape:nth-child(4) { width: 45px; height: 45px; top: 20%; left: 80%; }
+}
