@@ -1,29 +1,8 @@
-// import React from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import VerifyForm from './components/VerifyForm';
-// import VerifyResult from './components/VerifyResult';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <Router>
-//       <div className="app">
-//         <Routes>
-//           <Route path="/" element={<VerifyForm />} />
-//           <Route path="/verify" element={<VerifyResult />} />
-//         </Routes>
-//       </div>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import VerifyForm from './components/VerifyPage';
+import VerifyPage from './components/VerifyPage';
 import VerifyResult from './components/VerifyResult';
-import Home from './components/Home';
+import Home from './components/Home'; // optional landing page
 import './App.css';
 
 function App() {
@@ -31,9 +10,9 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/verify" element={<VerifyForm />} />
-          <Route path="/verify/result" element={<VerifyResult />} />
+          <Route path="/" element={<Home />} />               {/* Landing page */}
+          <Route path="/form" element={<VerifyPage />} />     {/* Optional separate form page */}
+          <Route path="/verify" element={<VerifyResult />} /> {/* QR code result page */}
         </Routes>
       </div>
     </Router>

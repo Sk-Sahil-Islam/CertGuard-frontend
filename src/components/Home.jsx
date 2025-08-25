@@ -68,7 +68,7 @@ export default function Home() {
         </motion.p>
         <motion.button
           className="cta-btn"
-          onClick={() => navigate("/verify")}
+          onClick={() => navigate("/form")}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

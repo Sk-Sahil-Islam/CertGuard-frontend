@@ -21,9 +21,10 @@ export default function VerifyPage() {
         <div className="logo">Certifyr</div>
         <nav>
           <a href="/">Home</a>
-          <a href="#verify-section">Verify</a>
+          {/* <a href="#verify-section">Verify</a> */} {/* Removed Verify link */}
         </nav>
       </header>
+
 
       {/* Main Content */}
       <main className="main">
