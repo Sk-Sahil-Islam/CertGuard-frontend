@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./VerifyPage.css";
+import certifyrLogo from "../assets/certifyr.png";
+// import { Link, useNavigate } from "react-router-dom"; // add Link here
+
 
 export default function VerifyPage() {
   const [code, setCode] = useState('');
@@ -18,12 +21,16 @@ export default function VerifyPage() {
     <div className="verify-page">
       {/* Navbar */}
       <header className="navbar">
-        <div className="logo">Certifyr</div>
+        <div className="logo-container" onClick={() => navigate("/")}>
+        <img src={certifyrLogo} alt="Certifyr" className="logo-image" />
+      </div>
+
         <nav>
           <a href="/">Home</a>
-          {/* <a href="#verify-section">Verify</a> */} {/* Removed Verify link */}
         </nav>
       </header>
+
+
 
 
       {/* Main Content */}
@@ -43,6 +50,7 @@ export default function VerifyPage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            style={{ opacity: 0 }}
           >
             Verify Your Certificate Instantly
           </motion.h1>
@@ -50,7 +58,8 @@ export default function VerifyPage() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            style={{ opacity: 0 }}
           >
             Enter the certificate code below to confirm authenticity and details.
           </motion.p>
@@ -59,8 +68,9 @@ export default function VerifyPage() {
             className="verify-form"
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            style={{ opacity: 0 }}
           >
             <div className="form-group">
               <input 
@@ -73,7 +83,16 @@ export default function VerifyPage() {
                 autoFocus
               />
             </div>
-            <button type="submit" className="cta-btn">Verify Certificate</button>
+            <motion.button 
+              type="submit" 
+              className="cta-btn"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.4 }}
+              style={{ opacity: 0 }}
+            >
+              Verify Certificate
+            </motion.button>
           </motion.form>
 
           <div className="verify-info">
